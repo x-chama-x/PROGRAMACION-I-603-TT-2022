@@ -33,9 +33,9 @@ int main (){
     total=ventColaTotal+ventNarTotal+ventLimTotal;
     printf("\n");
     printf("producto    ventas  precio  total\n");
-    printf("cola          %d      %d   %d    \n",ventasCola,precioCola,ventColaTotal);
-    printf("Naranja       %d      %d   %d    \n",ventasNar,precioNar,ventNarTotal);
-    printf("Limonada      %d      %d   %d    \n",ventasLim,precioLim,ventLimTotal);
-    printf("                    total  %d   \n",total);
+    printf("cola      %6d %6d %8d    \n",ventasCola,precioCola,ventColaTotal);
+    printf("Naranja   %6d %6d %8d    \n",ventasNar,precioNar,ventNarTotal);
+    printf("Limonada  %6d %6d %8d    \n",ventasLim,precioLim,ventLimTotal);
+    printf("                    total  %5d   \n",total);
     return 0;
 }
