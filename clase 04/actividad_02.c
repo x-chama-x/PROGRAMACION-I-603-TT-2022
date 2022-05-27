@@ -1,5 +1,5 @@
 /* 27/05/2022
-actividad_2: Ingresar 20 valores positivos (incluyendo el 0) por teclado y mostrar por 
+actividad_02: Ingresar 20 valores positivos (incluyendo el 0) por teclado y mostrar por 
 pantalla el valor maximo suponer un unico valor maximo.
 programa hecho por x_chama_x */
 

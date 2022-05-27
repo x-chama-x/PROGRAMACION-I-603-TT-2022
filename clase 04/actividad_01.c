@@ -1,5 +1,5 @@
 /* 27/05/2022
-actividad_1: Ingresar un numero N entero (validar que sea positivo)
+actividad_01: Ingresar un numero N entero (validar que sea positivo)
 Se pide:
 a) mostrar los primeros N numeros impares
 b) la suma de los N primeros numeros pares
