@@ -24,9 +24,9 @@ int main (){
     int x,y;
     int cuad1=0,cuad2=0,cuad3=0,cuad4=0,blanco=0,sobreElEje=0;
     int ganador,cantMaxBlanco=0;
-    for (int i = 1; i <= 3; i++)
+    for (int i = 1; i <= 5; i++)
     {
-        for (int j = 1; j <= 5; j++)
+        for (int j = 1; j <= 10; j++)
         {
             printf("%d disparo del %d participante:\n",j,i);
             printf("registrar coordenada x: ");
