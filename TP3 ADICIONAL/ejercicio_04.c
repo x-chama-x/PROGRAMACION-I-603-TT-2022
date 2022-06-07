@@ -65,7 +65,7 @@ int main (){
         printf("se recivieron mas llamadas de la zona del Gran Bs. As\n");
     }else if ((contR>contC)&&(contR>contG)) 
     {
-        printf("se recivieron mas llamadas del resto del pais\n");
+        printf("se recibieron mas llamadas del resto del pais\n");
     }
     printf("televidente ganador DNI: %d\n",ganadorDNI);
     switch (ganadorZona)
