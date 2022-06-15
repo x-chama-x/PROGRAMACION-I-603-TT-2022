@@ -16,7 +16,7 @@ int sumDigitos (int);
 int main (){
     int num;
     srand (getpid());
-    num=rand()%((99999-10001)+10001); //numero = rand () % (N-M+1) + M;  Este está entre M y N
+    num=rand()%(99999-10000+1)+10000; //numero = rand () % (N-M+1) + M;  Este está entre M y N
     printf("numero aleatorio: %d\n",num);
     printf("la suma de sus digitos es: %d",sumDigitos(num));
     return 0;
