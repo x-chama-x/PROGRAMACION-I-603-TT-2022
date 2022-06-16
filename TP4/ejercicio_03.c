@@ -27,11 +27,11 @@ int main (){
 }
 
 int extraervalor (int x,int y){ // x=num, y=cifraElegida
-    for (int i = 1; i <= 6; i++){ 
-        if ((i==y)&&(i<6)) // si i>6, devuelve valor -1, sino devuelve el digito correspondiente.
+    for (int i = 0; i <= 5; i++){ 
+        if ((i==y)&&(i<5)) // si i>6, devuelve valor -1, sino devuelve el digito correspondiente.
         {
             return x%10;
-        }else if (i<6){ // mientras i<6, se va diviendo el numero original (num)
+        }else if (i<5){ // mientras i<6, se va diviendo el numero original (num)
             x=x/10;
         }else{
             return -1;
