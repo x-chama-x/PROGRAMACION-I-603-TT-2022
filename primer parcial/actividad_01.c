@@ -45,5 +45,3 @@ float reaccionCTES (int x,int y){
     porcent=(x*100)/y;
     return porcent;
 }
-
-

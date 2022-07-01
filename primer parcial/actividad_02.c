@@ -44,16 +44,3 @@ int MCD (int x, int y){
     }
     return div; 
 }
-    
-    
-
-
-
-
-
-
-
-    
-
-
-
