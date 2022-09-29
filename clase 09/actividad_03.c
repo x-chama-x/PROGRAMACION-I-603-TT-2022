@@ -13,8 +13,8 @@ int main(){
 }
 
 void invertir(int x){
-   if (x<10){
-    printf("%d",x); // caso base
+   if (x<10){ // caso base
+    printf("%d",x); 
    }else{
     //x=x%10; // produce un error 
     printf("%d",x%10); // lo uso acá y funciona
