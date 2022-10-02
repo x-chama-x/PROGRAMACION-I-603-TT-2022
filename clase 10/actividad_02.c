@@ -1,5 +1,5 @@
 /* 02/10/2022
-actividad_01: cargar una matriz de nxm con numeros al azar. 
+actividad_02: cargar una matriz de nxm con numeros al azar. 
 Luego recorrer la matriz e indicar cuantos valores son 0. Tambien con 2 funciones
 programa hecho por x_chama_x */
 
