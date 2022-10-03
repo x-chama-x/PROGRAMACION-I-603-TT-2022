@@ -10,7 +10,6 @@ int main (){
     printf("ingresar un valor entero: ");
     scanf("%d",&n);
     sumaNaturales(n,suma);
-
     return 0;
 }
 
