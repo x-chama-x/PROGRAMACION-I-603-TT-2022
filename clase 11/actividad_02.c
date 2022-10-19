@@ -2,10 +2,22 @@
 actividad_02: Ordenamiento por selección ejemplo 2 --> compara el elemento mas chico con respecto al primer elemento
 programa hecho por x_chama_x */
 #include <stdio.h>
+void ordSeleccion(int []);
+void mostrarVector(int []);
 int main()
 {
+    int m[] = {19,35,34,18};
+    printf("vector antes de ordenar: ");
+    mostrarVector(m);
+    ordSeleccion(m);
+    printf("\nvector ordenado (mayor a menor): ");
+    mostrarVector(m);
+    return 0;
+}
+
+void ordSeleccion(int datos[])
+{
     int n = 4;
-    int datos[] = {19,35,34,18};
     int indiceMenor,aux;
     for (int i = 0; i < n-1; i++)
     {
@@ -24,5 +36,13 @@ int main()
             } 
         }
     }
-    return 0;
+}
+
+void mostrarVector(int datos[])
+{
+    int n = 4;
+    for (int i = 0; i < n; i++)
+    {
+        printf("%d, ",datos[i]);
+    }
 }
