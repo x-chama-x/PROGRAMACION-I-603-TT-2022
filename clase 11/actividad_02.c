@@ -19,20 +19,20 @@ void ordSeleccion(int datos[])
 {
     int n = 4;
     int indiceMenor,aux;
-    for (int i = 0; i < n-1; i++)
+    for (int i = 0; i < n - 1; i++)
     {
-        indiceMenor=i;
-        for (int j = 0; j < n; j++)
+        indiceMenor = i;
+        for (int j = i + 1; j < n; j++)
         {
-            if (datos[j]<datos[indiceMenor])
-                indiceMenor=j;
+            if (datos[j] < datos[indiceMenor])
+            indiceMenor = j;
         }
-        if (i!=indiceMenor)
+        if (i != indiceMenor)
         {
-            aux=datos[i];
-            datos[i]=datos[indiceMenor];
-            datos[indiceMenor]=aux;
-        } 
+            aux = datos[i];
+            datos[i] = datos[indiceMenor];
+            datos[indiceMenor] = aux;
+        }
     }
 }
 
