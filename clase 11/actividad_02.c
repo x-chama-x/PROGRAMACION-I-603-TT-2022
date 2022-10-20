@@ -10,7 +10,7 @@ int main()
     printf("vector antes de ordenar: ");
     mostrarVector(m);
     ordSeleccion(m);
-    printf("\nvector ordenado (mayor a menor): ");
+    printf("\nvector ordenado (menor a mayor): ");
     mostrarVector(m);
     return 0;
 }
