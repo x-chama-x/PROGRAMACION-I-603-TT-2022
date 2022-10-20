@@ -25,16 +25,14 @@ void ordSeleccion(int datos[])
         for (int j = 0; j < n; j++)
         {
             if (datos[j]<datos[indiceMenor])
-            {
                 indiceMenor=j;
-            }
-            if (i!=indiceMenor)
-            {
-                aux=datos[i];
-                datos[i]=datos[indiceMenor];
-                datos[indiceMenor]=aux;
-            } 
         }
+        if (i!=indiceMenor)
+        {
+            aux=datos[i];
+            datos[i]=datos[indiceMenor];
+            datos[indiceMenor]=aux;
+        } 
     }
 }
 
