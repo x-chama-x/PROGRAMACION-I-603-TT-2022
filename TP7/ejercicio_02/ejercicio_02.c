@@ -9,8 +9,8 @@ void copiarArchivo (FILE *f,FILE *f2);
 void verificarCopia (FILE *f2); // imprimir por pantalla los caracteres del archivo copiado
 int main ()
 {
-    FILE f; // archivo original
-    FILE f2; // copia del archivo
+    FILE f; // archivo original --> (no lo pongo como puntero porque lo voy a usar en una funcion (pasaje x referencia con puntero))
+    FILE f2; // copia del archivo --> (no lo pongo como puntero porque lo voy a usar en una funcion (pasaje x referencia con puntero))
     copiarArchivo(&f,&f2);
     verificarCopia(&f2);
     return 0;
