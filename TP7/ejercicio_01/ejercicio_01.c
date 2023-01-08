@@ -4,7 +4,14 @@ carácter.
 programa hecho por x_chama_x */
 
 #include <stdio.h>
-int main ()
+void procesarArchivo();
+int main()
+{
+    procesarArchivo();
+    return 0;
+}
+
+void procesarArchivo()
 {
     FILE *f;
     int c; // caracter a leer
@@ -23,5 +30,4 @@ int main ()
         }
     }
     fclose(f);
-    return 0;
 }

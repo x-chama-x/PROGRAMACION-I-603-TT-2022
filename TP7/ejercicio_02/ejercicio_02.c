@@ -5,11 +5,20 @@ desarrollar un algoritmo que genere una copia del mismo con el nombre
 programa hecho por x_chama_x */
 #include <stdio.h>
 #include<ctype.h>
+void copiarArchivo (FILE *f,FILE *f2);
+void verificarCopia (FILE *f2); // imprimir por pantalla los caracteres del archivo copiado
 int main ()
 {
-    FILE *f; // archivo original
-    FILE *f2; // copia del archivo
-    char c,c2;
+    FILE f; // archivo original
+    FILE f2; // copia del archivo
+    copiarArchivo(&f,&f2);
+    verificarCopia(&f2);
+    return 0;
+}
+
+void copiarArchivo(FILE *f,FILE *f2)
+{
+    char c;
     f = fopen("Mitexto.txt","r");
     f2 = fopen("MitextoNuevo.txt","w");
     if (f==NULL) // si f==NULL --> apertura incorrecta del archivo
@@ -24,17 +33,23 @@ int main ()
         }
     }
     fclose(f); fclose(f2);
+}
+
+void verificarCopia(FILE *f2)
+{
+    char c; // variable que almacena cada caracter
     f2 = fopen("MitextoNuevo.txt","r");
     if (f2==NULL) // si f==NULL --> apertura incorrecta del archivo
     {
         printf("error de apertura del archivo 2\n");
     }else
     {
-        while (c2!=EOF)  // se comprueba que el segundo archivo contenga una copia de lo que hay en el primero.
+        c = getc(f2);
+        while (c!=EOF)  // se comprueba que el segundo archivo contenga una copia de lo que hay en el primero.
         {
-            c2 = getc(f2);
-            printf("%c",c2);
+            printf("%c",c);
+            c = getc(f2);
         }
     }
-    return 0;
+    fclose(f2);
 }
