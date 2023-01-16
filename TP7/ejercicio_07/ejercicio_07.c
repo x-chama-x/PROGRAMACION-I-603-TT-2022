@@ -39,6 +39,7 @@ void promDatos()
         }
     }
     printf("promedio: %.1f",prom/cant);
+    fclose(f);
 }
 
 void valMaxMin()
@@ -72,4 +73,5 @@ void valMaxMin()
         printf("\nmax: %d\n",max);
         printf("min: %d",min);
     }
+    fclose(f);
 }
