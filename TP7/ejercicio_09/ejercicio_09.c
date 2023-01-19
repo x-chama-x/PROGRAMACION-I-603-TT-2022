@@ -5,7 +5,6 @@ programa hecho por x_chama_x */
 
 #include <stdio.h>
 #include<windows.h>
-#define n 10
 void procesarArchivoBin();
 void leerArchivoBin();
 int main ()
