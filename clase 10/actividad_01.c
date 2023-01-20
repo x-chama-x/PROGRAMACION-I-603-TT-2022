@@ -3,9 +3,10 @@ actividad_01: definir un vector de 50 elementos y cargar solo datos en las posic
 pares. Crear 2 funciones, una para la carga y otra para mostrar.
 programa hecho por x_chama_x */
 
+#include <stdio.h>
 void cargarVector(int []); // cargar vector como parametro (prototipo FUNCION) --> int []
 void mostrarVector(int []);
-#include <stdio.h>
+
 int main(){
     int vector [5];
     cargarVector(vector);
