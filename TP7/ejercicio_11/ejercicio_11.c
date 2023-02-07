@@ -6,79 +6,85 @@ por pantalla.
 programa hecho por x_chama_x */
 
 #include <stdio.h>
-#define cantDatos 1 // poner la cantidad de datos a ingresar
-typedef struct 
-{
-    //Campos de la estructura
-    int DNI;
-    char NombreApellido [30];
-    char deporte[10];
-} datos; // Definicion de un "nuevo" tipo de datos de estructura
+#include <string.h>
+#include <windows.h>
 
-void cargarDatosEstructura(datos[]);
-void generarArchivoBin(datos[]);
-void leerArchivoBin();
+typedef struct // creo la estructura para almacenar momentaneamente los datos que se escibiran (fwrite) al archivo binario
+{
+    int DNI;
+    char NombreApellido[30];
+    char Deporte [10];
+}Datos;
+
+void crearArchivoBin();
+void cargarDatosArchivo(Datos); // usando fwrite
+void leerArchivoBin(Datos); // usando fread
 int main()
 {
-    datos deportista[cantDatos];
-    cargarDatosEstructura(deportista);
-    generarArchivoBin(deportista);
-    leerArchivoBin();
+    Datos Deportista; // se usa una estructura sola y NO un vector de estructura.
+    crearArchivoBin();
+    cargarDatosArchivo(Deportista);
+    leerArchivoBin(Deportista);
     return 0;
 }
 
-void cargarDatosEstructura(datos v[cantDatos]) 
-{
-    for (int i = 0; i < cantDatos; i++)
-    {
-        printf("ingrese el DNI del deportista %d: ",i+1);
-        scanf("%d",&v[i].DNI);
-        printf("ingrese el NombreApellido del deportista %d: ",i+1);
-        scanf("%s",&v[i].NombreApellido);
-        printf("ingrese el deporte del deportista %d: ",i+1);
-        scanf("%s",&v[i].deporte);
-    }
-}
-
-void generarArchivoBin(datos v[cantDatos]) // generar y cargar archvio binario
+void crearArchivoBin() // basicamente se crea el archivo binario "deportistas.dat"
 {
     FILE *f;
-    f= fopen("deportistas.dat", "wb");
-    if (f != NULL)
+    f=fopen("deportistas.dat","wb");
+    fclose(f);
+}
+
+void cargarDatosArchivo(Datos Deportista) // se cargan los datos en el archivo binario "deportistas.dat"
+{
+    FILE *f;
+    f=fopen("deportistas.dat","wb");
+    if (f!= NULL)
     {
-        for (int i = 0; i < cantDatos; i++) // escritura de datos del vector de estructura
+        do
         {
-            fprintf(f,"%d\n",v[i].DNI); // Uso fprintf porque fwrite NO ME FUNCIONÓ
-            fprintf(f,"%s\n",v[i].NombreApellido);
-            fprintf(f,"%s\n",v[i].deporte);
+            system("cls");
+            printf("DNI=-1 para finalizar carga");
+            printf("\ningrese el DNI del deportista: ");
+            scanf("%d",&Deportista.DNI);
+            if (Deportista.DNI!=-1)
+            {
+                printf("ingrese el NombreApellido del deportista: ");
+                fflush(stdin);
+                gets(Deportista.NombreApellido);
+                printf("ingrese el deporte del deportista: ");
+                fflush(stdin);
+                gets(Deportista.Deporte);
+                fwrite(&Deportista, sizeof(Datos), 1, f); // se usa un solo fwrite que escribe toda la estructura (incluye sus variables internas) en el archivo bianrio
+            }
+            
+        } while (Deportista.DNI!=-1);
+        fclose(f);
+    }
+    else
+    {
+        printf("Error en la apertura del archivo");
+    } 
+}
+
+void leerArchivoBin(Datos Deportista) // mostrar datos del archivo "deportistas.dat"
+{
+    FILE *f;
+    system("cls");
+    f=fopen("deportistas.dat","rb");
+    if (f!=NULL)
+    {
+        printf("\nListado completo deportistas:\n");
+        fread(&Deportista, sizeof(Datos), 1, f);
+        while (!feof(f))
+        {
+            printf("%d \t%s \t%s\n", Deportista.DNI,Deportista.NombreApellido,Deportista.Deporte);
+            fread(&Deportista, sizeof(Datos), 1, f); // se usa un solo fread que lee toda la estructura (incluye sus variables internas)
         }
+        fclose(f);
     }
     else
     {
         printf("Error en la apertura del archivo");
     }
-    fclose(f);
-}
-
-
-void leerArchivoBin()
-{
-    char *p;
-    char cadena[20];
-    FILE *f;
-    f= fopen("deportistas.dat", "rb");
-    if (f != NULL)
-    {
-        p=fgets(cadena,100,f);
-        while (p!= NULL)
-        {
-            printf("%s",cadena);
-            p=fgets(cadena,100,f);
-        }
-    }
-    else
-    {
-        printf("Error en la apertura del archivo");
-    }
-    fclose(f);
 }
