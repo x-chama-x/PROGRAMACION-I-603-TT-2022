@@ -6,115 +6,91 @@ programa hecho por x_chama_x */
 
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
-#define cantDatos 5
 
 typedef struct 
 {
-    //Campos de la estructura
     int DNI;
-    char NombreApellido [30];
-    char deporte[10];
-} datos; // Definicion de un "nuevo" tipo de datos de estructura
+    char NombreApellido[30];
+    char Deporte [10];
+}Datos;
 
-void leerArchivoBin(datos []); // leer y procesar archivo deportistas.dat
-void crearArchivosBin(datos []); // crear archivos futbol.dat y tenis.dat
-void leerDatosArchivos(); // leer los datos de futbol.dat y tenis.dat.dat
+void crearArchivosBin(); // crea futbolistas.dat y tenistas.dat
+void procesarArchivosBin(Datos);
+void leerArchivosBin(Datos);
 int main()
 {
-    datos deportista [cantDatos];
-    leerArchivoBin(deportista);
-    crearArchivosBin(deportista);
-    leerDatosArchivos();
+    Datos Deportista;
+    crearArchivosBin();
+    procesarArchivosBin(Deportista);
+    leerArchivosBin(Deportista);
+
     return 0;
 }
 
-void leerArchivoBin(datos v[cantDatos])
+void crearArchivosBin()
 {
-    char *p;
-    char cadena[20];
-    FILE *f;
-    f= fopen("deportistas.dat", "rb");
-    if (f != NULL)
+    FILE *archivoFutbol,*archivoTenis;
+    archivoFutbol=fopen("futbolistas.dat","wb");
+    archivoTenis=fopen("tenistas.dat","wb");
+    fclose(archivoFutbol);fclose(archivoTenis);
+}
+
+
+void procesarArchivosBin(Datos Deportista) 
+{
+    FILE *f,*archivoFutbol,*archivoTenis;
+    f=fopen("deportistas.dat","rb");
+    archivoFutbol=fopen("futbolistas.dat","wb");
+    archivoTenis=fopen("tenistas.dat","wb");
+    if (f!=NULL||archivoFutbol!=NULL||archivoTenis!=NULL)
     {
-        p=fgets(cadena,100,f);
-        for (int i = 0; p!= NULL; i++) // cambio a un bucle for por conveniencia para detectar los datos de la cadena del archivo
+        fread(&Deportista, sizeof(Datos), 1, f);
+        while (!feof(f))
         {
-            v[i].DNI=atoi(cadena); // atoi(char) Convierte una cadena a su valor numérico (entero)
-            p=fgets(cadena,100,f);
-            strcpy(v[i].NombreApellido, cadena);
-            p=fgets(cadena,100,f);
-            strcpy(v[i].deporte, cadena);
-            p=fgets(cadena,100,f);
+            if (strcmp(Deportista.Deporte, "futbol") == 0)
+            {
+                fwrite(&Deportista, sizeof(Datos), 1, archivoFutbol);
+            }
+            else
+            {
+                fwrite(&Deportista, sizeof(Datos), 1, archivoTenis);
+            }
+            fread(&Deportista, sizeof(Datos), 1, f);
         }
+        fclose(f);fclose(archivoFutbol);fclose(archivoTenis);
     }
     else
     {
         printf("Error en la apertura del archivo");
     }
-    fclose(f);
 }
 
-void crearArchivosBin(datos v[cantDatos])
+void leerArchivosBin(Datos Deportista)
 {
-    FILE *fsoccer,*ftenis;
-    fsoccer=fopen("futbol.dat","wb");
-    ftenis=fopen("tenis.dat","wb");
-    for (int i = 0; i < cantDatos; i++)
+    FILE *archivoFutbol,*archivoTenis;
+    if (archivoFutbol!=NULL)
     {
-        if (strcmp(v[i].deporte, "futbol\n") == 0) // lo comparo con un salto de linea incluido que arrastré desde el archivo deportistas.dat 
+        printf("\nFutbolistas:\n");
+        archivoFutbol=fopen("futbolistas.dat","rb");
+        fread(&Deportista, sizeof(Datos), 1, archivoFutbol);
+        while (!feof(archivoFutbol))
         {
-            fprintf(fsoccer,"%d\n",v[i].DNI); // Uso fprintf porque fwrite NO ME FUNCIONÓ
-            fprintf(fsoccer,"%s",v[i].NombreApellido);
-            //fprintf(fsoccer,"%s\n",v[i].deporte);
-        }else
-        {
-            fprintf(ftenis,"%d\n",v[i].DNI); // Uso fprintf porque fwrite NO ME FUNCIONÓ
-            fprintf(ftenis,"%s",v[i].NombreApellido);
-            //fprintf(ftenis,"%s\n",v[i].deporte);
+            printf("%d \t%s \t%s\n", Deportista.DNI,Deportista.NombreApellido,Deportista.Deporte);
+            fread(&Deportista, sizeof(Datos), 1, archivoFutbol);
         }
-    }
-    fclose(fsoccer);
-    fclose(ftenis);
-}
-
-void leerDatosArchivos()
-{
-    char *p;
-    char cadena[20];
-    FILE *fsoccer,*ftenis;
-    printf("archivo futbol:\n");
-    fsoccer= fopen("futbol.dat", "rb");
-    if (fsoccer != NULL)
-    {
-        p=fgets(cadena,100,fsoccer);
-        while (p!= NULL)
+        fclose(archivoFutbol);
+        printf("Tenistas:\n");
+        archivoTenis=fopen("tenistas.dat","rb");
+        fread(&Deportista, sizeof(Datos), 1, archivoTenis);
+        while (!feof(archivoTenis))
         {
-            printf("%s",cadena);
-            p=fgets(cadena,100,fsoccer);
+            printf("%d \t%s \t%s\n", Deportista.DNI,Deportista.NombreApellido,Deportista.Deporte);
+            fread(&Deportista, sizeof(Datos), 1, archivoTenis);
         }
+        fclose(archivoTenis);
     }
     else
     {
         printf("Error en la apertura del archivo");
-    }
-    fclose(fsoccer);
-    printf("archivo tenis:\n");
-    ftenis= fopen("tenis.dat", "rb");
-    if (fsoccer != NULL)
-    {
-        p=fgets(cadena,100,ftenis);
-        while (p!= NULL)
-        {
-            printf("%s",cadena);
-            p=fgets(cadena,100,fsoccer);
-        }
-    }
-    else
-    {
-        printf("Error en la apertura del archivo");
-    }
-    fclose(ftenis);
+    }   
 }
-
-
