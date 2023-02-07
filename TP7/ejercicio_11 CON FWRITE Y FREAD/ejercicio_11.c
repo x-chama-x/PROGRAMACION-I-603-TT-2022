@@ -75,7 +75,7 @@ void leerArchivoBin() // mostrar datos del archivo "deportistas.dat"
         printf("Muestreo de datos del archivo:\n");
         fread(&DNI, sizeof(int), 1, f);
         fread(&NombreApellido, sizeof(char), strlen(NombreApellido), f);
-        fwrite(&deporte, sizeof(char), strlen(deporte), f);
+        fread(&deporte, sizeof(char), strlen(deporte), f);
         while (!feof(f))
         {
             printf("\nDNI: %d",DNI);
@@ -83,7 +83,7 @@ void leerArchivoBin() // mostrar datos del archivo "deportistas.dat"
             printf("\ndeporte: %s",deporte);
             fread(&DNI, sizeof(int), 1, f);
             fread(&NombreApellido, sizeof(char), strlen(NombreApellido), f);
-            fwrite(&deporte, sizeof(char), strlen(deporte), f);
+            fread(&deporte, sizeof(char), strlen(deporte), f);
         }
         fclose(f);
     }
