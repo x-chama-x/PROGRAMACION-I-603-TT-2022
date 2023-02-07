@@ -23,7 +23,6 @@ int main()
     crearArchivosBin();
     procesarArchivosBin(Deportista);
     leerArchivosBin(Deportista);
-
     return 0;
 }
 
