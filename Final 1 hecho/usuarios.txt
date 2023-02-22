@@ -1,0 +1,8 @@
+Juan 200
+Juan 200
+Maria 195
+Pedro 150
+Sofia 400	
+Maria 195
+Maria 195	
+Pedro 150
