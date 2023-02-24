@@ -1,0 +1,13 @@
+En el código proporcionado, saldoCategorias->saldoTotalC1 es una variable que almacena el saldo total 
+de la categoría 1 en la estructura datos. Se utiliza el operador flecha (->) para acceder al miembro saldoTotalC1 de la 
+estructura datos a través del puntero saldoCategorias.
+
+En la función saldo, se utiliza un bucle while para leer los datos de un archivo llamado "Socios.txt". 
+En cada iteración, se lee la categoría y la deuda de cada socio activo y se actualiza el 
+saldo total de la categoría correspondiente en la estructura datos. 
+La variable saldoCategorias es un puntero a la estructura datos que se pasa por referencia 
+a la función saldo, por lo que los cambios que se hacen en la estructura 
+dentro de la función son persistentes y se reflejan en la variable original en la función main.
+
+Por lo tanto, saldoCategorias->saldoTotalC1 almacena el saldo total de la categoría 1 
+en la estructura datos después de que se haya leído todo el archivo "Socios.txt".
