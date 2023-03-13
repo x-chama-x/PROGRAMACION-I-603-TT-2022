@@ -11,7 +11,7 @@ void cargarVector2(int,int [],int*,int []);
 void mostrarVectores(int,int [],int*,int []);
 int main()
 {
-    srand(time(NULL)); // funcion para generar numeros al azar
+    srand(time(NULL)); // funcion para generar numeros al azar (semilla aleatoria)
     const int comp1 = 5; // cargar cantidad de elementos del vector
     int comp2=0;
     int v1[comp1],v2[comp1];
